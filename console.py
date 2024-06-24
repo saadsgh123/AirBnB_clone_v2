@@ -27,7 +27,8 @@ class HBNBCommand(cmd.Cmd):
     types = {
              'number_rooms': int, 'number_bathrooms': int,
              'max_guest': int, 'price_by_night': int,
-             'latitude': float, 'longitude': float
+             'latitude': float, 'longitude': float, 'name':str, "city_id":str,
+             'user_id':str, 'age':int
             }
 
     def preloop(self):
@@ -129,14 +130,21 @@ class HBNBCommand(cmd.Cmd):
             for arg in line:
                 if '=' in arg:
                     attribute, value = arg.split('=')
-                    value = value.replace("\"", "")
-                    if '"' in value:
-                        cleaning = value.replace("'", "")
-                    setattr(new_instance, attribute, value, cleaning)
+                    # print(attribute)
+                    if attribute not in HBNBCommand.types.keys():
+                        print("** attribute {} doesn't exist **".format(attribute))
+                        return
+                    elif HBNBCommand.types[attribute] is int:
+                        value = int(value)
+                    elif HBNBCommand.types[attribute] is float:
+                        value = float(value)
+                    elif HBNBCommand.types[attribute] is str:
+                        value = value.replace("\"", "")
+                        value = value.replace("_", " ")
+                    setattr(new_instance, attribute, value)
 
             new_instance.save()
             print(new_instance.id)
-            print(new_instance.age)
 
     def help_create(self):
         """ Help information for the create method """

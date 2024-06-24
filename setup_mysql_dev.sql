@@ -1,3 +1,4 @@
+--creates a database a new user with specified permissions
 CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
 CREATE USER 'hbnb_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
 GRANT SELECT ON `performance_schema`.* TO 'hbnb_dev'@'localhost';

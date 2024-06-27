@@ -23,6 +23,12 @@ class FileStorage:
         """Adds new object to storage dictionary"""
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
 
+    def delete(self, obj=None):
+        if obj is None:
+            return
+        else:
+            del self.__objects[obj.to_dict()['__class__'] + '.' + obj.id]
+
     def save(self):
         """Saves storage dictionary to file"""
         with open(FileStorage.__file_path, 'w') as f:
@@ -56,15 +62,8 @@ class FileStorage:
         except FileNotFoundError:
             pass
 
-    def delete(self, obj=None):               
-        """Deletes an object from storage"""
-        if (obj == None):
+    def delete(self, obj=None):
+        if obj is None:
             return
         else:
-            del self.all()[obj.to_dict()['__class__'] + '.' + obj.id]
-        self.save()
-
-    def delete(self):
-        '''delete instance from the storage'''
-        from moduls import storage
-        storage.delete(self)
+            del self.__objects[obj.to_dict()['__class__'] + '.' + obj.id]

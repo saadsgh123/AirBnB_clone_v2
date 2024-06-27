@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """This module defines a class to manage file storage for hbnb clone"""
 import json
-import sys
 
 
 class FileStorage:
@@ -64,3 +63,8 @@ class FileStorage:
         else:
             del self.all()[obj.to_dict()['__class__'] + '.' + obj.id]
         self.save()
+
+    def delete(self):
+        '''delete instance from the storage'''
+        from moduls import storage
+        storage.delete(self)

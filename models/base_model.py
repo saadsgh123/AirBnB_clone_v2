@@ -7,13 +7,13 @@ from sqlalchemy import Column, Integer, String, DateTime
 
 Base = declarative_base()
 
+class BaseModel(Base):
+    __tablename__ = 'base_model'
 
-class BaseModel:
-    id = columns(Integer, String(60), nullable=False, primary_key=True)
-    created_at = Column(datetime, default=datetime.utcnow(), nullable=False)
-    updated_at = Column(datetime, defualt=datetime.utcnow(), nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
 
-    """A base class for all hbnb models"""
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
         if not kwargs:

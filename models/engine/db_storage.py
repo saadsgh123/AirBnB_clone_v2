@@ -29,35 +29,30 @@ class DBStorage:
             user, password, host, db)
 
         self.__engine = create_engine(db_url, pool_pre_ping=True)
-        
+
         if env == 'test':
             Base.metadata.drop_all(bind=self.__engine)
 
     def all(self, cls=None):
-        """
-        Queries the current database session (self.__session) for all objects
-        of a given class (cls). If cls is None, queries all types of objects.
-
-        Returns:
-            A dictionary with keys in the format <class-name>.<object-id> and
-            values as the corresponding objects.
-        """
-        objects = {}
+        """query on the current database session"""
+        obj_list = []
         if cls:
             if isinstance(cls, str):
-                cls = eval(cls)
-            query_results = self.__session.query(cls).all()
-            for obj in query_results:
-                key = f"{obj.__class__.__name__}.{obj.id}"
-                objects[key] = obj
+                try:
+                    cls = globals()[cls]
+                except KeyError:
+                    pass
+            if issubclass(cls, Base):
+                obj_list = self.__session.query(cls).all()
         else:
-            classes = [User, State, City, Amenity, Place, Review]
-            for cls in classes:
-                query_results = self.__session.query(cls).all()
-                for obj in query_results:
-                    key = f"{obj.__class__.__name__}.{obj.id}"
-                    objects[key] = obj
-        return objects
+            for subclass in Base.__subclasses__():
+                obj_list.extend(self.__session.query(subclass).all())
+
+        obj_dict = dict()
+        for obj in obj_list:
+            key = "{}.{}".format(obj.__class__.__name__, obj.id)
+            obj_dict[key] = obj
+        return obj_dict
 
     def new(self, obj):
         """Adds an object to the current database session (self.__session)"""

@@ -11,6 +11,7 @@ from models.place import Place
 from models.review import Review
 from os import getenv
 
+
 class DBStorage:
     """A storage class for SQLAlchemy"""
     __engine = None
@@ -24,7 +25,8 @@ class DBStorage:
         db = getenv('HBNB_MYSQL_DB')
         env = getenv('HBNB_ENV')
 
-        self.__engine = create_engine(f'mysql+mysqldb://{user}:{password}@{host}/{db}', pool_pre_ping=True)
+        db_url = "mysql+mysqldb://{}:{}@{}/{}".format(
+            user, password, host, db)
 
         if env == 'test':
             Base.metadata.drop_all(bind=self.__engine)
@@ -64,14 +66,16 @@ class DBStorage:
         self.__session.commit()
 
     def delete(self, obj=None):
-        """Removes an object from the current database session (self.__session)"""
+        """Removes an object from the current
+        database session (self.__session)"""
         if obj:
             self.__session.delete(obj)
 
     def reload(self):
         """Reloads the database session (self.__session)"""
         Base.metadata.create_all(self.__engine)
-        session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
 

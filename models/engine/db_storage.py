@@ -28,6 +28,8 @@ class DBStorage:
         db_url = "mysql+mysqldb://{}:{}@{}/{}".format(
             user, password, host, db)
 
+        self.__engine = create_engine(db_url, pool_pre_ping=True)
+        
         if env == 'test':
             Base.metadata.drop_all(bind=self.__engine)
 
@@ -79,6 +81,3 @@ class DBStorage:
         Session = scoped_session(session_factory)
         self.__session = Session()
 
-    def close(self):
-        """Closes the database session (self.__session)"""
-        self.__session.close()

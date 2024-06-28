@@ -18,8 +18,8 @@ class FileStorage:
             if isinstance(cls, str):
                 cls = eval(cls)
             filtered_objects = {k: v for k, v in self.__objects.items() if isinstance(v, cls)}
-            return filtered_objects
-        return self.__objects
+        return filtered_objects
+
 
     def new(self, obj):
         """Adds a new object to the storage dictionary."""

@@ -3,6 +3,7 @@
 import cmd
 import sys
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 from models.__init__ import storage
 from models.user import User
 from models.place import Place
@@ -10,6 +11,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+from os import getenv
 
 
 class HBNBCommand(cmd.Cmd):
@@ -24,6 +26,7 @@ class HBNBCommand(cmd.Cmd):
                'Review': Review
               }
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
+
     types = {
              'number_rooms': int, 'number_bathrooms': int,
              'max_guest': int, 'price_by_night': int,
@@ -126,24 +129,40 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             new_instance = HBNBCommand.classes[line[0]]()
-                                            #BaseModel()
             for arg in line:
                 if '=' in arg:
-                    attribute, value = arg.split('=')
-                    # print(attribute)
-                    if attribute not in HBNBCommand.types.keys():
-                        print("** attribute {} doesn't exist **".format(attribute))
-                        return
-                    elif HBNBCommand.types[attribute] is int:
-                        value = int(value)
-                    elif HBNBCommand.types[attribute] is float:
-                        value = float(value)
-                    elif HBNBCommand.types[attribute] is str:
-                        value = value.replace("\"", "")
-                        value = value.replace("_", " ")
+                    # attribute, value = arg.split('=')
+                    # # print(attribute)
+                    # if attribute not in HBNBCommand.types.keys():
+                    #     print("** attribute {} doesn't exist **".format(attribute))
+                    #     return
+                    # elif HBNBCommand.types[attribute] is int:
+                    #     value = int(value)
+                    # elif HBNBCommand.types[attribute] is float:
+                    #     value = float(value)
+                    # elif HBNBCommand.types[attribute] is str:
+                    #     value = value.replace("\"", "")
+                    #     value = value.replace("_", " ")
+                    # setattr(new_instance, attribute, value)
+                    attribute, value = arg.split("=")
+                    for i in range(1):
+                        try:
+                            value = int(value)
+                            break
+                        except ValueError:
+                            pass
+                        try:
+                            value = float(value)
+                            break
+                        except ValueError:
+                            break
+                    if isinstance(value, str):
+                        stripped_value = value.strip("\"")
+                        final_value = stripped_value.replace('_', ' ')
+                        value = final_value
                     setattr(new_instance, attribute, value)
-
-            new_instance.save()
+            storage.new(new_instance)
+            storage.save()
             print(new_instance.id)
 
     def help_create(self):

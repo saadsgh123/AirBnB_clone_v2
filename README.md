@@ -148,3 +148,21 @@ EOF  all  count  create  destroy  help  quit  show  update
 $
 ```
 
+Alternatively, to use the HolbertonBnB console in interactive mode, run the
+file `console.py` by itself:
+
+```
+$ ./console.py
+```
+
+Remember, the console can be run with `storage` instantiated in either `FileStorage`
+or `DBStorage` mode. The above examples instantiate `FileStorage` by default, but
+`DBStorage` can be instantiated like so:
+
+```
+$ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
+```
+
+The console functions identically regardless of the `storage` mode.
+
+While running in interactive mode, the console displays a prompt for input:

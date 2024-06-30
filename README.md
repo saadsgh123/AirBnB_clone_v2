@@ -197,3 +197,19 @@ The HolbertonBnB console supports the following commands:
 Creates a new instance of a given class. The class' ID is printed and
 the instance is saved to the file `file.json`. When passing parameter key/value
 pairs, any underscores contained in value strings are replaced by spaces.
+
+```
+$ ./console.py
+(hbnb) create BaseModel
+119be863-6fe5-437e-a180-b9892e8746b8
+(hbnb)
+(hbnb) create State name="California"
+(hbnb) quit
+$ cat file.json ; echo ""
+{"BaseModel.119be863-6fe5-437e-a180-b9892e8746b8": {"updated_at": "2019-02-17T2
+1:30:42.215277", "created_at": "2019-02-17T21:30:42.215277", "__class__": "Base
+Model", "id": "119be863-6fe5-437e-a180-b9892e8746b8"}, {'id': 'd80e0344-63eb-43
+4a-b1e0-07783522124e', 'created_at': datetime.datetime(2017, 11, 10, 4, 41, 7, 
+842160), 'updated_at': datetime.datetime(2017, 11, 10, 4, 41, 7, 842235), 'name
+': 'California'}}
+```

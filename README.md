@@ -186,3 +186,14 @@ $ ./console.py
 (hbnb) EOF
 $
 ```
+
+### Console Commands
+
+The HolbertonBnB console supports the following commands:
+
+#### create
+* Usage: `create <class> <param 1 name>=<param 1 value> <param 2 name>=<param 2 value> ...`
+
+Creates a new instance of a given class. The class' ID is printed and
+the instance is saved to the file `file.json`. When passing parameter key/value
+pairs, any underscores contained in value strings are replaced by spaces.

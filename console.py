@@ -26,14 +26,12 @@ class HBNBCommand(cmd.Cmd):
                'Review': Review
               }
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
-
     types = {
              'number_rooms': int, 'number_bathrooms': int,
              'max_guest': int, 'price_by_night': int,
              'latitude': float, 'longitude': float, 'name':str, "city_id":str,
              'user_id':str, 'age':int
             }
-
     def preloop(self):
         """Prints if isatty is false"""
         if not sys.__stdin__.isatty():
@@ -77,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
                 pline = pline[2].strip()  # pline is now str
                 if pline:
                     # check for *args or **kwargs
-                    if pline[0] == '{' and pline[-1] =='}'\
+                    if pline[0] == '{' and pline[-1] == '}'\
                             and type(eval(pline)) == dict:
                         _args = pline
                     else:
@@ -131,35 +129,17 @@ class HBNBCommand(cmd.Cmd):
             new_instance = HBNBCommand.classes[line[0]]()
             for arg in line:
                 if '=' in arg:
-                    # attribute, value = arg.split('=')
-                    # # print(attribute)
-                    # if attribute not in HBNBCommand.types.keys():
-                    #     print("** attribute {} doesn't exist **".format(attribute))
-                    #     return
-                    # elif HBNBCommand.types[attribute] is int:
-                    #     value = int(value)
-                    # elif HBNBCommand.types[attribute] is float:
-                    #     value = float(value)
-                    # elif HBNBCommand.types[attribute] is str:
-                    #     value = value.replace("\"", "")
-                    #     value = value.replace("_", " ")
-                    # setattr(new_instance, attribute, value)
-                    attribute, value = arg.split("=")
-                    for i in range(1):
-                        try:
-                            value = int(value)
-                            break
-                        except ValueError:
-                            pass
-                        try:
-                            value = float(value)
-                            break
-                        except ValueError:
-                            break
-                    if isinstance(value, str):
-                        stripped_value = value.strip("\"")
-                        final_value = stripped_value.replace('_', ' ')
-                        value = final_value
+                    attribute, value = arg.split('=')
+                    if attribute not in HBNBCommand.types.keys():
+                        print("** attribute {} doesn't exist **".format(attribute))
+                        return
+                    elif HBNBCommand.types[attribute] is int:
+                        value = int(value)
+                    elif HBNBCommand.types[attribute] is float:
+                        value = float(value)
+                    elif HBNBCommand.types[attribute] is str:
+                        value = value.replace("\"", "")
+                        value = value.replace("_", " ")
                     setattr(new_instance, attribute, value)
             new_instance.save()
             print(new_instance.id)

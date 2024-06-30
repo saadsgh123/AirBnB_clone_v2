@@ -54,3 +54,13 @@ In this second iteration of the project, I, together with a new partner,
 inherited a different version of the same back-end written by a pair of
 Holberton students from an older cohort. We then pair programmed
 to build up the database storage engine of the back-end.
+
+In between each version, I put together an entire CSS-styled HTML web page
+for the project. This front-end development was coded independently, although
+the HTML files I personally wrote are only posted in
+[version one](https://github.com/bdbaraban/AirBnB_clone) (the
+[web_static](./web_static) folder in this directory was included in the
+fork). Addtionally, all Shell, Puppet, and Fabric deployment scripts/manifests
+were coded myself.
+
+The README's in both repositories were almost exclusively written myself.

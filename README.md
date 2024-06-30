@@ -123,3 +123,10 @@ defined on the MySQL server. This repository includes scripts
 [setup_mysql_dev.sql](./setup_mysql_dev.sql) and [setup_mysql_test.sql](./setup_mysql_test.sql)
 to set up `hbnb_dev_db` and `hbnb_test_db` databases in a MySQL server,
 respectively.
+
+
+## Console :computer:
+
+The console is a command line interpreter that permits management of the backend
+of HolbertonBnB. It can be used to handle and manipulate all classes utilized by
+the application (achieved by calls on the `storage` object defined above).

@@ -136,3 +136,14 @@ the application (achieved by calls on the `storage` object defined above).
 The HolbertonBnB console can be run both interactively and non-interactively.
 To run the console in non-interactive mode, pipe any command(s) into an execution
 of the file `console.py` at the command line.
+
+```
+$ echo "help" | ./console.py
+(hbnb)
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
+
+(hbnb)
+$
+```

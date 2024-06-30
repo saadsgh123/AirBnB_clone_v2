@@ -70,3 +70,23 @@ of everything in this repository. And hey, software development is no fun withou
 some confusing version control, right? :sweat_smile: :sob:
 
 Please let me know if you have any questions!
+
+---
+
+### Static :page_facing_up:
+
+The front-end of HolbertonBnB was designed from scratch using HTML5/CSS3 pages
+integrated using Flask. While the front-end has not yet been officially deployed,
+screenshots are viewable in the README of the [web_flask](./web_flask) directory.
+
+### Classes :cl:
+
+HolbertonBnB supports the following classes:
+
+* BaseModel
+* User
+* State
+* City
+* Amenity
+* Place
+* Review

@@ -254,3 +254,51 @@ d2d789cd-7427-4920-aaae-88cbcf8bffe2
 $ cat file.json ; echo ""
 {}
 ```
+#### all
+* Usage: `all` or `all <class>` or `<class>.all()`
+
+Prints the string representations of all instances of a given class. If no
+class name is provided, the command prints all instances of every class.
+
+```
+$ ./console.py
+(hbnb) create BaseModel
+fce2124c-8537-489b-956e-22da455cbee8
+(hbnb) create BaseModel
+450490fd-344e-47cf-8342-126244c2ba99
+(hbnb) create User
+b742dbc3-f4bf-425e-b1d4-165f52c6ff81
+(hbnb) create User
+8f2d75c8-fb82-48e1-8ae5-2544c909a9fe
+(hbnb)
+hbnb) all BaseModel
+["[BaseModel] (450490fd-344e-47cf-8342-126244c2ba99) {'updated_at': datetime.da
+tetime(2019, 2, 17, 21, 45, 5, 963516), 'created_at': datetime.datetime(2019, 2
+, 17, 21, 45, 5, 963516), 'id': '450490fd-344e-47cf-8342-126244c2ba99'}", "[Bas
+eModel] (fce2124c-8537-489b-956e-22da455cbee8) {'updated_at': datetime.datetime
+(2019, 2, 17, 21, 43, 56, 899348), 'created_at': datetime.datetime(2019, 2, 17,
+21, 43, 56, 899348), 'id': 'fce2124c-8537-489b-956e-22da455cbee8'}"]
+(hbnb)
+(hbnb) User.all()
+["[User] (8f2d75c8-fb82-48e1-8ae5-2544c909a9fe) {'updated_at': datetime.datetim
+e(2019, 2, 17, 21, 44, 44, 428413), 'created_at': datetime.datetime(2019, 2, 17
+, 21, 44, 44, 428413), 'id': '8f2d75c8-fb82-48e1-8ae5-2544c909a9fe'}", "[User] 
+(b742dbc3-f4bf-425e-b1d4-165f52c6ff81) {'updated_at': datetime.datetime(2019, 2
+, 17, 21, 44, 15, 974608), 'created_at': datetime.datetime(2019, 2, 17, 21, 44,
+15, 974608), 'id': 'b742dbc3-f4bf-425e-b1d4-165f52c6ff81'}"]
+(hbnb)
+(hbnb) all
+["[User] (8f2d75c8-fb82-48e1-8ae5-2544c909a9fe) {'updated_at': datetime.datetim
+e(2019, 2, 17, 21, 44, 44, 428413), 'created_at': datetime.datetime(2019, 2, 17
+, 21, 44, 44, 428413), 'id': '8f2d75c8-fb82-48e1-8ae5-2544c909a9fe'}", "[BaseMo
+del] (450490fd-344e-47cf-8342-126244c2ba99) {'updated_at': datetime.datetime(20
+19, 2, 17, 21, 45, 5, 963516), 'created_at': datetime.datetime(2019, 2, 17, 21,
+45, 5, 963516), 'id': '450490fd-344e-47cf-8342-126244c2ba99'}", "[User] (b742db
+c3-f4bf-425e-b1d4-165f52c6ff81) {'updated_at': datetime.datetime(2019, 2, 17, 2
+1, 44, 15, 974608), 'created_at': datetime.datetime(2019, 2, 17, 21, 44, 15, 97
+4608), 'id': 'b742dbc3-f4bf-425e-b1d4-165f52c6ff81'}", "[BaseModel] (fce2124c-8
+537-489b-956e-22da455cbee8) {'updated_at': datetime.datetime(2019, 2, 17, 21, 4
+3, 56, 899348), 'created_at': datetime.datetime(2019, 2, 17, 21, 43, 56, 899348
+), 'id': 'fce2124c-8537-489b-956e-22da455cbee8'}"]
+(hbnb)
+```

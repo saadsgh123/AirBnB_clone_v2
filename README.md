@@ -95,3 +95,13 @@ HolbertonBnB supports the following classes:
 The above classes are handled by one of either two abstracted storage engines,
 depending on the call - [FileStorage](./models/engine/file_storage.py) or
 [DBStorage](./models/engine/db_storage.py).
+
+### FileStorage
+
+The default mode.
+
+In `FileStorage` mode, every time the backend is initialized, HolbertonBnB
+instantiates an instance of `FileStorage` called `storage`. The `storage`
+object is loaded/re-loaded from any class instances stored in the JSON file
+`file.json`. As class instances are created, updated, or deleted, the
+`storage` object is used to register corresponding changes in the `file.json`.

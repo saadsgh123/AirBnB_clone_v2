@@ -166,3 +166,23 @@ $ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost
 The console functions identically regardless of the `storage` mode.
 
 While running in interactive mode, the console displays a prompt for input:
+
+```
+$ ./console.py
+(hbnb)
+```
+
+To quit the console, enter the command `quit`, or input an EOF signal
+(`ctrl-D`).
+
+```
+$ ./console.py
+(hbnb) quit
+$
+```
+
+```
+$ ./console.py
+(hbnb) EOF
+$
+```

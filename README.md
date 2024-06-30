@@ -24,3 +24,22 @@ deploy in the coming month:
   <img src="https://github.com/bdbaraban/AirBnB_clone_v2/blob/master/assets/hbnb_stack.png"
 	    alt="HolbertonBnB stack">
 </p>
+
+---
+
+## NOTE TO 2019 LYFT SOFTWARE ENGINEERING APPRENTICESHIP RECRUITER
+
+This web app has been the capstone project of my full-stack education at
+Holberton School and I want to show it off as a demonstration of all the
+skills I've learned at this school.
+
+With that said, I must clarify that it is not complete. As mentioned, the
+clone is a work-in-progress, with full deployment as a RESTful API still to
+come. Finishing touches will be occurring over the next month, my final at
+Holberton.
+
+Recognizing that I am sharing a near-complete project, I additionally put
+together a small Flask app according to the specifications described in the
+application. Please take a look at this separate repository here:
+
+https://github.com/bdbaraban/lyft_apprenticeship_application

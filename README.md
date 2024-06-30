@@ -64,3 +64,9 @@ fork). Addtionally, all Shell, Puppet, and Fabric deployment scripts/manifests
 were coded myself.
 
 The README's in both repositories were almost exclusively written myself.
+I hope this helps clear things up. I apologize for the confusing versioning, but
+the takeaway is that I've been directly involved in coding at least _an_ implementation
+of everything in this repository. And hey, software development is no fun without
+some confusing version control, right? :sweat_smile: :sob:
+
+Please let me know if you have any questions!

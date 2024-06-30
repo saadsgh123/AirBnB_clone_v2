@@ -90,3 +90,8 @@ HolbertonBnB supports the following classes:
 * Amenity
 * Place
 * Review
+## Storage :baggage_claim:
+
+The above classes are handled by one of either two abstracted storage engines,
+depending on the call - [FileStorage](./models/engine/file_storage.py) or
+[DBStorage](./models/engine/db_storage.py).

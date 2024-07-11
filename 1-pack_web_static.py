@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # generates a .tgz archive from the contents of the web_static
 # folder of your AirBnB Clone repo
-from fabric import task
+from fabric.api import task
 from datetime import datetime
 
 @task

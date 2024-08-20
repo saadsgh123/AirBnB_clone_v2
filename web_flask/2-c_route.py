@@ -18,7 +18,7 @@ def hbnb():
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def c_rooting(text):
+def c(text):
     """ def doc """
     return 'C {}'.format(text.replace("_", " "))
 

@@ -6,26 +6,26 @@ app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
-def hello_root():
+def hello():
     """ def doc """
     return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hbnb_root():
+def hbnb():
     """ def doc """
     return "HBNB"
 
 
 @app.route('/c/<text>', strict_slashes=False)
-def c_root(text):
+def c(text):
     """ def doc """
     return 'c {}'.format(text.replace("_", " "))
 
 
 @app.route('/python', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python_root(text):
+def python(text):
     """ def doc """
     return 'Python {}'.format(text.replace("_", " "))
 
